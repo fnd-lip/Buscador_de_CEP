@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    // Hilt
+    id("com.google.dagger.hilt.android") version "2.60.1"
+    // Kapt para AGP 9
+    id("com.android.legacy-kapt") version libs.versions.agp.get()
 }
 
 android {
@@ -56,4 +60,17 @@ dependencies {
     // Navigation Compose
     val nav_version = "2.10.2"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    // Hilt
+    val hiltVersion = "2.60.1"
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    // Hilt Navigation Compose
+    implementation("androidx.hilt:hilt-navigation-compose:1.4.0")
+
+    // Ktor Client
+    val ktorVersion = "3.6.1"
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:${ktorVersion}")
 }
